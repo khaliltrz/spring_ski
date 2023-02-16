@@ -1,9 +1,7 @@
 package tn.esprit.ds.skikhalil_trabelsi.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Piste {
@@ -14,4 +12,6 @@ public class Piste {
     private Couleur Couleur;
     private int longeur;
     private int pente;
+    @ManyToMany
+    private List<Skieur> skieurs;
 }

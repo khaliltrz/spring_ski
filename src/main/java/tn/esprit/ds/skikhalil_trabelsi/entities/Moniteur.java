@@ -4,6 +4,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 public class Moniteur {
@@ -12,5 +13,5 @@ public class Moniteur {
     private String prenom;
     private LocalDate dateRecru;
 @OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
-    Set<Cours> cours;
+    private List<Cours> cours;
 }

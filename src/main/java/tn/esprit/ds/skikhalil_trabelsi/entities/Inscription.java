@@ -10,4 +10,6 @@ public class Inscription {
     private int numSemaine;
     @ManyToOne
     private Cours cour;
+    @ManyToOne
+    private Skieur skieur;
 }

@@ -21,4 +21,5 @@ public class Cours {
     @OneToMany(mappedBy="cour")
     private List<Inscription> inscriptions;
 
+
 }

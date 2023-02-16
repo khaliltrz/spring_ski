@@ -2,6 +2,9 @@ package tn.esprit.ds.skikhalil_trabelsi.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 public class Skieur {
     @Id
@@ -11,6 +14,10 @@ public class Skieur {
     private String prenomS;
     private LocalDate dateNaissance;
     private String ville;
-    @OneToOne(cascade = CascadeType.ALL)
-    Abonnement abonnement;
+    @ManyToMany
+    private List<Piste> pistes;
+   @OneToMany
+   private List<Inscription> inscriptions;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private Abonnement abonnement;
 }
