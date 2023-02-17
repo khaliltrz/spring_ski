@@ -2,8 +2,7 @@ package tn.esprit.ds.skikhalil_trabelsi.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-import tn.esprit.ds.skikhalil_trabelsi.entities.Skieur;
+import tn.esprit.ds.skikhalil_trabelsi.entities.Abonnement;
 
-public interface SkieurRepository extends JpaRepository<Skieur,Long> {
-
+public interface AbonnementRepository extends JpaRepository<Abonnement,Long> {
 }

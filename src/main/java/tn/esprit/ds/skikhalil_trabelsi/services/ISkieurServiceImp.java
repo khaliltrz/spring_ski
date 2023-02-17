@@ -7,7 +7,7 @@ import tn.esprit.ds.skikhalil_trabelsi.repositories.SkieurRepository;
 
 import java.util.List;
 @Service
-public class SkieurService implements ISkieurService{
+public class ISkieurServiceImp implements ISkieurService{
     @Autowired
     SkieurRepository skieurRepository;
     @Override
@@ -17,21 +17,22 @@ public class SkieurService implements ISkieurService{
 
     @Override
     public Skieur addSkieur(Skieur skieur) {
+
         return skieurRepository.save(skieur);
     }
 
     @Override
     public Skieur upDateSkieur(Skieur skieur) {
-        return null;
+        return skieurRepository.save(skieur);
     }
 
     @Override
     public void removeSkieur(Long numSkieur) {
-
+        skieurRepository.deleteById(numSkieur);
     }
 
     @Override
     public Skieur retrieveSkieur(Long numSkieur) {
-        return skieurRepository.findById();
+        return skieurRepository.findById(numSkieur).orElse(null);
     }
 }
