@@ -1,8 +1,19 @@
 package tn.esprit.ds.skikhalil_trabelsi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Inscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -10,6 +21,7 @@ public class Inscription {
     private int numSemaine;
     @ManyToOne
     private Cours cour;
-    @ManyToOne
+    @ManyToOne()
+    @JsonIgnore
     private Skieur skieur;
 }

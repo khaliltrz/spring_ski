@@ -3,37 +3,38 @@ package tn.esprit.ds.skikhalil_trabelsi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ds.skikhalil_trabelsi.entities.Skieur;
+import tn.esprit.ds.skikhalil_trabelsi.repositories.PisteRepository;
 import tn.esprit.ds.skikhalil_trabelsi.services.ISkieurService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("skieur")
+@RequestMapping("/skieur")
 public class SkieurController {
     @Autowired
-    ISkieurService iSkieurService;
-    @GetMapping("retrieveAllSkieurs")
-    public List<Skieur> getAll()
-    {
-        return iSkieurService.retrieveAllSkieurs();
+    ISkieurService skieurService;
+    @GetMapping
+    public List<Skieur> getAll(){
+        return skieurService.retrieveAllSkieurs();
+    }
+    @GetMapping("/{numSkieur}")
+    public Skieur retrieveSkieur (@PathVariable Long numSkieur){
+        return skieurService.retrieveSkieur(numSkieur);
     }
     @PostMapping
-    public Skieur add(@RequestBody Skieur skieur){
-
-        return iSkieurService.addSkieur(skieur);
+    public Skieur postSkieur(@RequestBody Skieur skieur){
+        return skieurService.addSkieur(skieur);
     }
-    @DeleteMapping("{numSkieur}")
-    public void removeSkieur(@PathVariable long numSkieur) {
-        iSkieurService.removeSkieur(numSkieur);
-    }
-    @PutMapping("update")
+    @PutMapping
     public Skieur updateSkieur(@RequestBody Skieur skieur){
-        return iSkieurService.upDateSkieur(skieur);
+        return skieurService.upDateSkieur(skieur);
     }
-    @GetMapping("{numSkieur}")
-    public Skieur retrieveSkieur(@PathVariable Long numSkieur)
-    {
-        return iSkieurService.retrieveSkieur(numSkieur);
+    @DeleteMapping("/{id}")
+    public void removeSkieur (@PathVariable(name = "id") Long numSkieur){
+        skieurService.removeSkieur(numSkieur);
     }
-
+    @PutMapping("/{numSkieur}/{numPiste}")
+    public Skieur assignSkierToPiste(@PathVariable Long numSkieur,@PathVariable Long numPiste){
+        return skieurService.assignSkierToPiste(numSkieur,numPiste);
+    }
 }

@@ -1,11 +1,18 @@
 package tn.esprit.ds.skikhalil_trabelsi.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Skieur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +21,11 @@ public class Skieur {
     private String prenomS;
     private LocalDate dateNaissance;
     private String ville;
-    @ManyToMany
+    @ManyToMany(mappedBy = "skieurs")
+    @JsonIgnore
     private List<Piste> pistes;
-   @OneToMany
-   private List<Inscription> inscriptions;
     @OneToOne(cascade = CascadeType.REMOVE)
     private Abonnement abonnement;
+    @OneToMany(mappedBy = "skieur")
+    private List<Inscription> inscription;
 }

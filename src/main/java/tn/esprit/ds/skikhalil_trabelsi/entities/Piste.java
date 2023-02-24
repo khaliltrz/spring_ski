@@ -1,17 +1,24 @@
 package tn.esprit.ds.skikhalil_trabelsi.entities;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Piste {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numPiste;
+    private long numPiste;
     private String nomPiste;
-    private Couleur Couleur;
+    @Enumerated(EnumType.STRING)
+    private Couleur couleur;
     private int longeur;
     private int pente;
-    @ManyToMany
+    @ManyToMany()
     private List<Skieur> skieurs;
 }

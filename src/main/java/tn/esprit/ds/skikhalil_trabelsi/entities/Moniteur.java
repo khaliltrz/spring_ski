@@ -1,17 +1,23 @@
 package tn.esprit.ds.skikhalil_trabelsi.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToMany;
+import lombok.*;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
-
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Moniteur {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numMoniteur;
     private String nomM;
-    private String prenom;
+    private String prenomM;
     private LocalDate dateRecru;
-@OneToMany(cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
+    @OneToMany()
     private List<Cours> cours;
 }
