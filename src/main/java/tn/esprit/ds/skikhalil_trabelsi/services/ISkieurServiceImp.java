@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.ds.skikhalil_trabelsi.entities.Piste;
 import tn.esprit.ds.skikhalil_trabelsi.entities.Skieur;
+import tn.esprit.ds.skikhalil_trabelsi.entities.TypeAbonnement;
 import tn.esprit.ds.skikhalil_trabelsi.repositories.PisteRepository;
 import tn.esprit.ds.skikhalil_trabelsi.repositories.SkieurRepository;
 
@@ -52,5 +53,10 @@ public class ISkieurServiceImp implements ISkieurService{
             pisteRepository.save(piste);
         }
         return skieurRepository.findById(numSkieur).orElse(null);
+    }
+
+    @Override
+    public List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement) {
+        return skieurRepository.findByAbonnement_TypeAbon(typeAbonnement);
     }
 }

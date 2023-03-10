@@ -1,6 +1,7 @@
 package tn.esprit.ds.skikhalil_trabelsi.services;
 
 import tn.esprit.ds.skikhalil_trabelsi.entities.Skieur;
+import tn.esprit.ds.skikhalil_trabelsi.entities.TypeAbonnement;
 
 import java.util.List;
 
@@ -11,4 +12,5 @@ public interface ISkieurService {
     void removeSkieur (Long numSkieur);
     Skieur retrieveSkieur (Long numSkieur);
     Skieur assignSkierToPiste(Long numSkieur, Long numPiste);
+    List<Skieur> retrieveSkiersBySubscriptionType(TypeAbonnement typeAbonnement);
 }

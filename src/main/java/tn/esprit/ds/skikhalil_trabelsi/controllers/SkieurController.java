@@ -3,6 +3,7 @@ package tn.esprit.ds.skikhalil_trabelsi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.ds.skikhalil_trabelsi.entities.Skieur;
+import tn.esprit.ds.skikhalil_trabelsi.entities.TypeAbonnement;
 import tn.esprit.ds.skikhalil_trabelsi.repositories.PisteRepository;
 import tn.esprit.ds.skikhalil_trabelsi.services.ISkieurService;
 
@@ -36,5 +37,9 @@ public class SkieurController {
     @PutMapping("/{numSkieur}/{numPiste}")
     public Skieur assignSkierToPiste(@PathVariable Long numSkieur,@PathVariable Long numPiste){
         return skieurService.assignSkierToPiste(numSkieur,numPiste);
+    }
+    @PutMapping("/{typeAbonnement}")
+    public List<Skieur> retrieveSkiersBySubscriptionType(@PathVariable(name = "typeAbonnement") TypeAbonnement typeAbonnement) {
+        return skieurService.retrieveSkiersBySubscriptionType(typeAbonnement);
     }
 }
